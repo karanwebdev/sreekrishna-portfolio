@@ -14,6 +14,17 @@ module.exports = withCache(
     }[0]
     `);
 
+    // Handle empty Sanity project
+    if (!contact) {
+      return {
+        dribbble: '#',
+        email: 'hello@example.com',
+        instagram: '#',
+        twitter: '#',
+        facebook: '#',
+      };
+    }
+
     return contact;
   },
   'contact',

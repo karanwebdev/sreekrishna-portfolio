@@ -15,6 +15,16 @@ module.exports = withCache(
     }[0]
     `);
 
+    // Handle empty Sanity project
+    if (!seo) {
+      return {
+        title: 'Portfolio',
+        description: 'Welcome to the portfolio',
+        keywords: '',
+        homeCover: null,
+      };
+    }
+
     return seo;
   },
   'seo',

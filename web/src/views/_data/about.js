@@ -25,6 +25,17 @@ module.exports = withCache(
     }[0]
   `);
 
+    // Handle empty Sanity project
+    if (!about) {
+      return {
+        intro: '<p>About content coming soon...</p>',
+        cover: null,
+        footer: null,
+        services: [],
+        desc: null,
+      };
+    }
+
     about.intro = toHTML(about.intro, { components: aboutHero });
 
     return about;

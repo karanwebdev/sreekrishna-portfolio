@@ -35,13 +35,22 @@ export class Intro {
 
   images = () => new Promise((resolve) => {
     // eslint-disable-next-line no-underscore-dangle
-    const images = window._D.map(({ cover }) => cover);
+    const data = window._D || [];
+    
+    // Handle empty data - resolve immediately
+    if (data.length === 0) {
+      this.update && this.update(100);
+      resolve();
+      return;
+    }
+    
+    const images = data.map(({ cover }) => cover);
     ImageLoader({
       arr: images,
       update: (img, i, progress) => {
         // image only project
         // eslint-disable-next-line no-underscore-dangle
-        if (!window._D[i].loop?.full) {
+        if (!data[i]?.loop?.full) {
           gl.createMedia(img, i);
         }
         this.update && this.update(progress);
@@ -55,7 +64,8 @@ export class Intro {
 
   static videos = async () => new Promise((resolve) => {
     // eslint-disable-next-line no-underscore-dangle
-    window._D.forEach((item, idx) => {
+    const data = window._D || [];
+    data.forEach((item, idx) => {
       if (!item?.loop?.full) return;
 
       const { loop, cover } = item;

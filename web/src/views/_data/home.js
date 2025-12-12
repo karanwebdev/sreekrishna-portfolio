@@ -20,6 +20,11 @@ module.exports = withCache(
     }
     `);
 
+    // Handle empty Sanity project
+    if (!home || home.length === 0) {
+      return [];
+    }
+
     const imageParsed = home.map((item) => ({
       ...item,
       cover: urlFor(item.loop?.poster || item.cover).width(2500).fit('max').auto('format')

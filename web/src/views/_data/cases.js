@@ -20,6 +20,11 @@ module.exports = withCache(
     }
     `);
 
+    // Handle empty Sanity project
+    if (!cases || cases.length === 0) {
+      return [];
+    }
+
     const n = cases.length;
     cases.forEach((item, idx) => {
       // get next case cyclically

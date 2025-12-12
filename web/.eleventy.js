@@ -71,11 +71,19 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addNunjucksShortcode("imageUrlFor", (image) => {
+    if (!image || !image.asset) {
+      return '';
+    }
     return urlFor(image).width(2500).fit("max").auto("format");
   });
 
   
   eleventyConfig.addShortcode('sanityImage', (image, alt = '', width = 1200, priority = 0, classList = '', srcs = null, sizes = null) => {
+    // Handle null/undefined images
+    if (!image || !image.asset) {
+      return `<div class="sanity-img-placeholder" style="width:${width}px;aspect-ratio:16/9;background:#222;"></div>`;
+    }
+    
     const builder = urlFor(image).fit('max').auto('format');
 
     const baseSizes = [400, 600, 850, 1000, 1150, width];

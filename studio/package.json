@@ -22,6 +22,7 @@
     "@sanity/default-login": "^2.35.0",
     "@sanity/desk-tool": "^2.35.1",
     "@sanity/eslint-config-studio": "^2.0.1",
+    "@sanity/form-builder": "2.36.2",
     "@sanity/orderable-document-list": "^0.0.8",
     "@sanity/vision": "^2.35.0",
     "eslint": "^8.6.0",
@@ -33,9 +34,9 @@
     "sanity-plugin-media": "^1.4.4",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/SiddharthSham/wulf.git"
-  }
+  },
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
 }
