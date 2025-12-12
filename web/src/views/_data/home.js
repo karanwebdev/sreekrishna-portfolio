@@ -25,15 +25,20 @@ module.exports = withCache(
       return [];
     }
 
-    const imageParsed = home.map((item) => ({
-      ...item,
-      cover: urlFor(item.loop?.poster || item.cover)
-        .width(2500)
-        .fit("max")
-        .auto("format")
-        .url(),
-      slug: string(item.slug.current).slugify().toString(),
-    }));
+    const imageParsed = home
+      .filter((item) => item.cover || item.loop?.poster) // Only include items with covers
+      .map((item) => ({
+        ...item,
+        cover:
+          item.cover || item.loop?.poster
+            ? urlFor(item.loop?.poster || item.cover)
+                .width(2500)
+                .fit("max")
+                .auto("format")
+                .url()
+            : null,
+        slug: string(item.slug.current).slugify().toString(),
+      }));
 
     return imageParsed;
   },
