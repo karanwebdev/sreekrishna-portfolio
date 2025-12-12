@@ -1,7 +1,7 @@
-const title = 'Wulf';
+const title = 'Sree Krishna';
 const apiId = '743befd7-872e-40c3-b4c2-c66d669f0d3a';
 const buildHookId = '62c5d2b5d0a76d0fb0694f6d';
-const name = 'wulf';
+const name = 'sree-krishna';
 
 export default {
   widgets: [

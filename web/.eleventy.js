@@ -28,12 +28,11 @@ const getSanityImageAspectRatio = (image) => {
   //  - image-7558c4a4d73dac0398c18b7fa2c69825882e6210-366x96-png
   // When splitting by '-' we can extract ["image", _id, dimensions, extension]
   // unresolved image
-  const dimensions = image.asset._ref.split('-')[2];
+  const dimensions = image.asset._ref.split("-")[2];
   // "366x96" -> ["366", "96"] -> [366, 96]
-  const [width, height] = dimensions.split('x').map(Number);
+  const [width, height] = dimensions.split("x").map(Number);
   return width / height;
 };
-
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("static");
@@ -72,64 +71,76 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addNunjucksShortcode("imageUrlFor", (image) => {
     if (!image || !image.asset) {
-      return '';
+      return "";
     }
     return urlFor(image).width(2500).fit("max").auto("format");
   });
 
-  
-  eleventyConfig.addShortcode('sanityImage', (image, alt = '', width = 1200, priority = 0, classList = '', srcs = null, sizes = null) => {
-    // Handle null/undefined images
-    if (!image || !image.asset) {
-      return `<div class="sanity-img-placeholder" style="width:${width}px;aspect-ratio:16/9;background:#222;"></div>`;
-    }
-    
-    const builder = urlFor(image).fit('max').auto('format');
+  eleventyConfig.addShortcode(
+    "sanityImage",
+    (
+      image,
+      alt = "",
+      width = 1200,
+      priority = 0,
+      classList = "",
+      srcs = null,
+      sizes = null
+    ) => {
+      // Handle null/undefined images
+      if (!image || !image.asset) {
+        return `<div class="sanity-img-placeholder" style="width:${width}px;aspect-ratio:16/9;background:#222;"></div>`;
+      }
 
-    const baseSizes = [400, 600, 850, 1000, 1150, width];
-    const retinaSizes = Array.from(
-      new Set([
-        ...baseSizes,
-        ...baseSizes.map((size) => size * 2),
-        ...baseSizes.map((size) => size * 3),
-      ]),
-    ).sort()
-      .filter(
-        (size) => size <= width * 3,
+      const builder = urlFor(image).fit("max").auto("format");
+
+      const baseSizes = [400, 600, 850, 1000, 1150, width];
+      const retinaSizes = Array.from(
+        new Set([
+          ...baseSizes,
+          ...baseSizes.map((size) => size * 2),
+          ...baseSizes.map((size) => size * 3),
+        ])
       )
-      .filter((size, i, arr) => {
-        const nextSize = arr[i + 1];
-        if (nextSize) {
-          return Math.abs(nextSize - size) > 50;
-        }
+        .sort()
+        .filter((size) => size <= width * 3)
+        .filter((size, i, arr) => {
+          const nextSize = arr[i + 1];
+          if (nextSize) {
+            return Math.abs(nextSize - size) > 50;
+          }
 
-        return true;
-      });
+          return true;
+        });
 
-    const srcSetContent = retinaSizes.map((size) => `${builder.width(size).url()} ${size}w`).join(', ');
-    const sizesContent = `(max-width: ${width}px) 100vw, ${width + 20}px`;
+      const srcSetContent = retinaSizes
+        .map((size) => `${builder.width(size).url()} ${size}w`)
+        .join(", ");
+      const sizesContent = `(max-width: ${width}px) 100vw, ${width + 20}px`;
 
-    const aspectRatio = getSanityImageAspectRatio(image);
-    const height = aspectRatio > 0 ? Math.round(width * (1 / aspectRatio)) : 0;
-    const defaultClassname = `sanity-img ${priority > 0 ? 'sanity-img--priority' : 'sanity-img--lazy'}`;
+      const aspectRatio = getSanityImageAspectRatio(image);
+      const height =
+        aspectRatio > 0 ? Math.round(width * (1 / aspectRatio)) : 0;
+      const defaultClassname = `sanity-img ${
+        priority > 0 ? "sanity-img--priority" : "sanity-img--lazy"
+      }`;
 
-    return (
-      `<img 
+      return `<img 
         src="${urlFor(image).width(width)}"
-        class="${defaultClassname}${classList || ''}"
+        class="${defaultClassname}${classList || ""}"
         srcset="${srcs || srcSetContent}"
         sizes="${sizes || sizesContent}"
         width="${width}"
         ${aspectRatio > 0 && `height="${height}"`}
-        loading="${priority > 0 ? 'eager' : 'lazy'}"
-        decoding="${priority > 1 ? 'sync' : priority < 0 ? 'async' : 'auto'}"
-        fetchpriority="${priority > 1 ? 'high' : priority < 0 ? 'low' : 'auto'}"
+        loading="${priority > 0 ? "eager" : "lazy"}"
+        decoding="${priority > 1 ? "sync" : priority < 0 ? "async" : "auto"}"
+        fetchpriority="${priority > 1 ? "high" : priority < 0 ? "low" : "auto"}"
         data-aspect="${aspectRatio}"
         style="--aspect:${aspectRatio}"
         alt="${alt}"
-      >`
-    );
-  });
+      >`;
+    }
+  );
 
   eleventyConfig.addNunjucksShortcode("fileUrlFor", (file) => {
     return buildFileUrl(file);
@@ -156,18 +167,20 @@ module.exports = (eleventyConfig) => {
     return `${urlPart}?${params}`;
   });
 
-  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
-    code,
-    callback
-  ) {
-    try {
-      const minified = await esbuildTransform(JSON.stringify(code), { loader: "js" });
-      callback(null, minified.code);
-    } catch (err) {
-      console.error("Esbuild error: ", err);
-      callback(null, code);
+  eleventyConfig.addNunjucksAsyncFilter(
+    "jsmin",
+    async function (code, callback) {
+      try {
+        const minified = await esbuildTransform(JSON.stringify(code), {
+          loader: "js",
+        });
+        callback(null, minified.code);
+      } catch (err) {
+        console.error("Esbuild error: ", err);
+        callback(null, code);
+      }
     }
-  });
+  );
 
   return {
     pathPrefix: "/",

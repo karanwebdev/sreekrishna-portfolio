@@ -102,7 +102,7 @@ export default {
     },
   ],
   initialValue: {
-    title: "Wulf",
-    url: "https://wulf.netlify.app",
+    title: "SREE - Filmmaker & Creative Director",
+    url: "https://sreekrishna.com",
   },
 };

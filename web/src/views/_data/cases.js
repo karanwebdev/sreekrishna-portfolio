@@ -1,8 +1,8 @@
-const groq = require('groq');
-const getVideoId = require('get-video-id');
-const client = require('../../../utils/sanityClient');
+const groq = require("groq");
+const getVideoId = require("get-video-id");
+const client = require("../../../utils/sanityClient");
 
-const withCache = require('../../../utils/cache');
+const withCache = require("../../../utils/cache");
 
 module.exports = withCache(
   async () => {
@@ -45,6 +45,6 @@ module.exports = withCache(
 
     return cases;
   },
-  'cases',
-  '1d',
+  "cases",
+  "1d"
 );

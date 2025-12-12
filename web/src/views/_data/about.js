@@ -1,10 +1,10 @@
-const groq = require('groq');
+const groq = require("groq");
 
-const htm = require('htm');
-const vhtml = require('vhtml');
-const { toHTML } = require('@portabletext/to-html');
-const withCache = require('../../../utils/cache');
-const client = require('../../../utils/sanityClient');
+const htm = require("htm");
+const vhtml = require("vhtml");
+const { toHTML } = require("@portabletext/to-html");
+const withCache = require("../../../utils/cache");
+const client = require("../../../utils/sanityClient");
 
 const html = htm.bind(vhtml);
 
@@ -28,7 +28,7 @@ module.exports = withCache(
     // Handle empty Sanity project
     if (!about) {
       return {
-        intro: '<p>About content coming soon...</p>',
+        intro: "<p>About content coming soon...</p>",
         cover: null,
         footer: null,
         services: [],
@@ -40,8 +40,8 @@ module.exports = withCache(
 
     return about;
   },
-  'about',
-  '1d',
+  "about",
+  "1d"
 );
 
 // module.exports = {

@@ -1,9 +1,9 @@
-const groq = require('groq');
-const string = require('string');
-const client = require('../../../utils/sanityClient');
-const urlFor = require('../../../utils/imageUrl');
+const groq = require("groq");
+const string = require("string");
+const client = require("../../../utils/sanityClient");
+const urlFor = require("../../../utils/imageUrl");
 
-const withCache = require('../../../utils/cache');
+const withCache = require("../../../utils/cache");
 
 module.exports = withCache(
   async () => {
@@ -27,13 +27,16 @@ module.exports = withCache(
 
     const imageParsed = home.map((item) => ({
       ...item,
-      cover: urlFor(item.loop?.poster || item.cover).width(2500).fit('max').auto('format')
+      cover: urlFor(item.loop?.poster || item.cover)
+        .width(2500)
+        .fit("max")
+        .auto("format")
         .url(),
       slug: string(item.slug.current).slugify().toString(),
     }));
 
     return imageParsed;
   },
-  'home',
-  '1d',
+  "home",
+  "1d"
 );

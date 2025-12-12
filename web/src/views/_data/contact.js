@@ -1,7 +1,7 @@
-const groq = require('groq');
-const client = require('../../../utils/sanityClient');
+const groq = require("groq");
+const client = require("../../../utils/sanityClient");
 
-const withCache = require('../../../utils/cache');
+const withCache = require("../../../utils/cache");
 
 module.exports = withCache(
   async () => {
@@ -17,18 +17,18 @@ module.exports = withCache(
     // Handle empty Sanity project
     if (!contact) {
       return {
-        dribbble: '#',
-        email: 'hello@example.com',
-        instagram: '#',
-        twitter: '#',
-        facebook: '#',
+        dribbble: "#",
+        email: "hello@example.com",
+        instagram: "#",
+        twitter: "#",
+        facebook: "#",
       };
     }
 
     return contact;
   },
-  'contact',
-  '1d',
+  "contact",
+  "1d"
 );
 
 // module.exports = {
