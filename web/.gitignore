@@ -72,3 +72,4 @@ yarn.lock
 
 # Static site
 dist
+.vercel

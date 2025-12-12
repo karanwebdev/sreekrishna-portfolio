@@ -28,6 +28,7 @@ export class Titles {
   }
 
   on = (idx = this.state.idx) => {
+    if (!this.reveals.length || !this.reveals[idx]) return;
     this.reveals[idx].play({
       duration: 1250,
       from: 110,
@@ -41,6 +42,7 @@ export class Titles {
   };
 
   off = () => {
+    if (!this.reveals.length || !this.reveals[this.state.idx]) return;
     this.reveals[this.state.idx].playTo({
       duration: 400, to: -110, stagger: 25, delay: 0, visible: false, easing: 'i3',
     });

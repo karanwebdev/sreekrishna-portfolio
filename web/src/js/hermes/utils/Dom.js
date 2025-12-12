@@ -30,6 +30,7 @@ export const select = (query) => {
 };
 
 export const getOffsetTop = (el) => {
+  if (!el) return 0;
   let top = 0;
   let clone = el;
   while (clone.offsetParent) {
