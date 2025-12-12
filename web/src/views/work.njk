@@ -1,0 +1,24 @@
+---
+layout: _layout.njk
+title: Work
+---
+
+<main id="home" class="pen" data-hydra-content="home">
+
+    <div id="frame">
+        <div aria-hidden class="frame-border" id="frame-top-right"></div>
+        <div aria-hidden class="frame-border" id="frame-bottom-left"></div>
+        <button id="goto-case" aria-label="Open case study page"></button>
+    </div>
+
+    <ul id="case-title--list" class="font-alt ttu pen">
+        {% for item in home %}
+            <li class="case-title--item tac">{{ item.title }}</li>
+        {% endfor %}
+    </ul>
+
+    {% include '_footer.njk' %}
+
+    {# dummy to prevent scroll #}
+    <div aria-hidden="true" data-scroll-section></div>
+</main>

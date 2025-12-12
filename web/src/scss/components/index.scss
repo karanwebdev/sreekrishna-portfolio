@@ -1,0 +1,22 @@
+// @import './slider.scss';
+@import "./reveal.scss";
+@import "./link.scss";
+@import "./lazyloader.scss";
+@import "./grid.scss";
+@import "./cursor.scss";
+@import "./youtube.scss";
+
+@import "./nav.scss";
+@import "./footer.scss";
+
+.h-socials--item {
+  svg {
+    width: fluid(32, $sm);
+    height: fluid(32, $sm);
+
+    @include md {
+      width: fluid(32);
+      height: fluid(32);
+    }
+  }
+}

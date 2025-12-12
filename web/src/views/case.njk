@@ -1,0 +1,137 @@
+---
+layout: _layout.njk
+title: Case
+pagination:
+    data: cases
+    size: 1
+    alias: case
+    addAllPagesToCollections: true
+permalink: "case/{{ case.slug.current | slugify }}/"
+eleventyComputed:
+    title: "{{ case.title }}"
+    seo.description: "{{ case.intro }}"
+---
+
+<main id="case" class="pea" data-hydra-content="case" data-scroll-section>
+  <div class="pa top right left z1" aria-hidden>
+    <div id="case-hero-gradient"></div>
+  </div>
+
+  <section id="case-hero" class="pr">
+    <div id="case-img" class="pr">
+      <picture id="case-img--main" class="fade-in--img">
+        {# <img fetchpriority="high" loading="eager" decoding="sync" src="{% imageUrlFor case.cover %}" alt="{{ case.cover.alt }}"> #}
+        {% sanityImage case.cover,
+        case.cover.alt,
+        1844,
+        2 %}
+      </picture>
+
+      <h1 id="case-title" class="pa ttu font-alt">{{ case.title }}</h1>
+
+    </div>
+
+    <div id="case-img--icons" aria-hidden>
+      <svg id="icons-rectangle--left">
+        <use xlink:href="#rectangle-icon"></use>
+      </svg>
+      <svg id="icons-star--left">
+        <use xlink:href="#star-small"></use>
+      </svg>
+      <svg id="icons-star--right">
+        <use xlink:href="#star-small"></use>
+      </svg>
+      <svg id="icons-rectangle--right">
+        <use xlink:href="#rectangle-icon"></use>
+      </svg>
+    </div>
+
+    <ul id="case-info" class="df ttu">
+      <li class="case-info-items df fc">
+        <span>Year</span>
+        <span>{{ case.details.year }}</span>
+      </li>
+      <li class="case-info-items df fc">
+        <span>Type</span>
+        <span>{{ case.details.type }}</span>
+      </li>
+      <li class="case-info-items df fc">
+        <span>Client</span>
+        <span>{{ case.details.client }}</span>
+      </li>
+    </ul>
+
+    <p id="case-story" class="ttu tac font-alt case-story">{{ case.intro }}</p>
+  </section>
+
+  <svg class="db case-hero-snowflake" aria-hidden>
+    <use xlink:href="#snowflake-icon"></use>
+  </svg>
+
+  <section id="case-highlights">
+    {% if case.ytid %}
+      <div id="case-highlights--img">
+        <div class="pr yt-video">
+          <lite-youtube videoid="{{ case.ytid }}" style="height: 100%"></lite-youtube>
+        </div>
+
+        <div id="case-highlights-icons" class="df aic">
+          <svg id="case-highlights-star">
+            <use xlink:href="#star-small"></use>
+          </svg>
+          <svg id="case-highlights-rectangle">
+            <use xlink:href="#rectangle-icon"></use>
+          </svg>
+          <span id="case-highlights-text">F2.02</span>
+        </div>
+      </div>
+    {% endif %}
+
+    {% for item in case.thumbnails %}
+      <picture class="case-highlights--img fade-in--img" id="case-highligts--img-{{ loop.index }}">
+        {# <img loading="lazy" decoding="async" data-lazy-src="{% imageUrlFor item %}" alt="{{ item.alt }}"> #}
+        {% sanityImage item,
+        item.alt,
+        600 %}
+      </picture>
+    {% endfor %}
+
+  </section>
+
+  {% if case.result %}
+    <section id="case-result">
+      <h2 class="ttu tac case-result--title">Result</h2>
+      <p class="ttu tac font-alt case-story case-result--story">{{ case.result }}</p>
+      {% if case.resultDescription %}
+        <p class="tac case-result--desc">{{ case.resultDescription }}</p>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  <svg class="db case-hero-snowflake" aria-hidden>
+    <use xlink:href="#snowflake-icon"></use>
+  </svg>
+
+  <section id="up-next" class="pr">
+    <div id="up-next--marquee" class="pa ttu font-alt">
+      <span>up next \</span>
+      <span>up next \</span>
+      <span>up next \</span>
+      <span>up next \</span>
+      <span>up next \</span>
+      <span>up next \</span>
+    </div>
+    <a id="up-next--link" href="/case/{{ case.next.title | slugify }}/" class="df jcc aic">
+      <picture id="up-next-img" class="fade-in--img">
+        {# <img loading="lazy" decoding="async" data-lazy-src="{% imageUrlFor case.next.cover %}" alt="{{ case.next.cover.alt }}"> #}
+        {% sanityImage case.next.cover,
+        case.next.cover.alt,
+        600 %}
+      </picture>
+      <p id="up-next-title" class="pa ttu font-alt">{{ case.next.title }}</p>
+    </a>
+  </section>
+
+  {% include "_components/_footer.njk" %}
+
+</main>

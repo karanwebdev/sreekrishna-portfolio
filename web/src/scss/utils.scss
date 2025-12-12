@@ -1,0 +1,21 @@
+@use 'sass:math';
+
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+@function clampfont($value) {
+  @return clamp(#{strip-unit($value) * 0.9}px, #{$value}, #{strip-unit($value) * 1.2}px);
+}
+
+@function fluid($px, $container: $lg, $unit: 1vw) {
+  @return $px * math.div(100 * $unit, $container);
+}
+
+@function clampfluid($value) {
+  @return clamp(#{strip-unit($value) * 0.9}px, #{fluid($value)}, #{strip-unit($value) * 1.2}px);
+}

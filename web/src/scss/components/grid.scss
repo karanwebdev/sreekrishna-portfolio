@@ -1,0 +1,37 @@
+@use "sass:math";
+
+
+#grid {
+    opacity: 0;
+
+    $cols-m: 4;
+    $gap-m: 8;
+    $margin-m: 8;
+
+    $cols: 12;
+    $gap: 20;
+    $margin: 96;
+
+    margin: 0 auto;
+    width: fluid($sm - $margin-m * 2, $sm);
+    gap: fluid($gap-m, $sm);
+
+    div {
+        width: fluid(($sm - (($cols-m + 1) * $gap-m)) * math.div(1, $cols-m), $sm);
+        background-color: red;
+        opacity: 0.2;
+    }
+
+    @include md {
+        gap: fluid($gap, $lg);
+        width: fluid($lg - $margin * 2, $lg);
+
+        div {
+            width: fluid(($lg - (($cols + 1) * $gap)) * math.div(1, $cols), $lg);
+        }
+    }
+}
+
+#grid.active {
+    opacity: 1;
+}

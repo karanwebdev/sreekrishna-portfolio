@@ -1,0 +1,478 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+#about-hero {
+  margin: 0 auto;
+  padding-top: fluid(222, $sm);
+  width: fluid(336, $sm);
+
+  #about-hero--item-rectangle {
+    width: fluid(44, $sm);
+    height: fluid(8, $sm);
+    bottom: fluid(54);
+    // left: 0;
+    margin-right: fluid(134, $sm);
+
+    @include md {
+      width: fluid(44);
+      height: fluid(8);
+      bottom: fluid(54);
+      margin-right: fluid(542);
+    }
+  }
+
+  #about-wulf {
+    margin-bottom: fluid(16, $sm);
+    opacity: 0.8;
+
+    span {
+      font-size: 10px;
+      line-height: 106.5%;
+    }
+
+    @include md {
+      margin-bottom: fluid(17);
+    }
+  }
+
+  #hero-title {
+    line-height: 113%;
+    letter-spacing: -0.015em;
+    color: #4a4a4a;
+    margin-bottom: fluid(100, $sm);
+
+    width: fluid(336, $sm);
+    font-size: fluid(28, $sm);
+    white-space: pre-wrap;
+
+    span {
+      display: inline-block;
+    }
+
+    #title-text--mesmerizing {
+      transform: rotate(-0.84deg);
+      background-color: #ffffff;
+      color: #111210;
+    }
+
+    #title-text--clips {
+      transform: rotate(1.79deg);
+      background-color: #ffffff;
+      color: #111210;
+    }
+
+    @include md {
+      width: fluid(1275);
+      font-size: fluid(76);
+      margin-bottom: fluid(96);
+    }
+  }
+
+  #hero-desc {
+    width: fluid(235, $sm);
+    font-size: fluid(18, $sm);
+    line-height: 121%;
+    margin: 0 fluid(41, $sm) fluid(43, $sm) fluid(99, $sm);
+    color: #828282;
+
+    @include md {
+      width: fluid(500);
+      font-size: fluid(22);
+      margin-left: fluid(583);
+      margin-bottom: fluid(138);
+      margin-right: 0;
+    }
+  }
+
+  #hero-socials-container {
+    flex-direction: column;
+    margin-bottom: fluid(43, $sm);
+
+    @include md {
+      flex-direction: row;
+      margin-bottom: unset;
+    }
+  }
+
+  #hero-socials {
+    gap: fluid(11, $sm);
+    height: fit-content;
+    margin-left: fluid(99, $sm);
+
+    @include md {
+      gap: fluid(12);
+      margin-left: auto;
+    }
+
+    svg {
+      width: fluid(32, $sm);
+      height: fluid(32, $sm);
+
+      @include md {
+        width: fluid(32);
+        height: fluid(32);
+      }
+    }
+  }
+
+  .hero-svg--hand {
+    width: fluid(118, $sm);
+    height: fluid(118, $sm);
+    left: fluid(30, $sm);
+    bottom: fluid(-85, $sm);
+    border-radius: fluid(22);
+    transform: rotate(18deg);
+
+    @include md {
+      width: fluid(290);
+      height: fluid(290);
+      left: unset;
+      bottom: unset;
+      right: fluid(0);
+      top: fluid(0);
+      transform: translate(110%, -40%);
+    }
+
+    &.fx-on svg:nth-child(1) {
+      animation: rotation 16s infinite linear;
+    }
+
+    svg:nth-child(2) {
+      width: fluid(42, $sm);
+      height: fluid(42, $sm);
+      transform: rotate(-43deg);
+
+      @include md {
+        width: fluid(102);
+        height: fluid(102);
+      }
+    }
+  }
+
+  @include md {
+    width: fluid(1728);
+    padding-top: fluid(397);
+  }
+}
+
+#services-svg--cam {
+  width: fluid(118, $sm);
+  height: fluid(118, $sm);
+  top: fluid(181, $sm);
+  right: fluid(36, $sm);
+  z-index: 2;
+
+  &.fx-on svg:nth-child(1) {
+    animation: rotation 16s infinite linear;
+  }
+
+  svg:nth-child(2) {
+    width: fluid(42, $sm);
+    height: fluid(42, $sm);
+
+    @include md {
+      width: fluid(98);
+      height: fluid(98);
+    }
+  }
+
+  @include md {
+    width: fluid(290);
+    height: fluid(290);
+    top: fluid(239);
+    left: fluid(174);
+  }
+}
+
+#services-img--main {
+  width: 100%;
+  margin-bottom: fluid(127, $sm);
+
+  @include md {
+    height: fluid(802);
+    width: fluid(1243);
+    margin-left: auto;
+    margin-bottom: fluid(167);
+  }
+}
+
+#services-title {
+  width: fluid(345, $sm);
+  font-size: fluid(32, $sm);
+  line-height: 106.5%;
+  letter-spacing: -0.015em;
+  color: #4a4a4a;
+  margin: 0 auto fluid(85, $sm);
+
+  @include md {
+    width: fluid(869);
+    font-size: fluid(80);
+    margin-bottom: fluid(131);
+  }
+}
+
+.services-list {
+  margin-bottom: fluid(84, $sm);
+  flex-direction: column;
+  text-align: center;
+
+  &--item {
+    width: fluid(336, $sm);
+    margin-bottom: fluid(60, $sm);
+    padding-bottom: fluid(32, $sm);
+    border-bottom: 1px solid #3c3c3c;
+
+    @include md {
+      width: fluid(576);
+      min-height: fluid(450);
+      border-bottom: none;
+      border-right: 1px solid #3c3c3c;
+      margin-bottom: 0;
+      padding: 0 fluid(80) fluid(128);
+
+      &:nth-of-type(3n) {
+        border-right: none;
+      }
+    }
+  }
+
+  .list-item--decal {
+    bottom: fluid(32, $sm);
+
+    @include md {
+      bottom: 0;
+      padding: 0 fluid(80) fluid(54);
+    }
+  }
+
+  &--item-icon {
+    margin: 0 auto fluid(27, $sm) auto;
+    width: fluid(98, $sm);
+    aspect-ratio: 1 / 1;
+
+    @include md {
+      margin: 0 0 fluid(65) 0;
+      width: fluid(94);
+    }
+  }
+
+  &--item-star {
+    width: fluid(16, $sm);
+    height: fluid(16, $sm);
+    bottom: 0;
+    right: 0;
+
+    @include md {
+      width: fluid(16);
+      height: fluid(16);
+      bottom: fluid(50);
+      right: 0;
+    }
+  }
+
+  &--item-rectangle {
+    width: fluid(44, $sm);
+    height: fluid(8, $sm);
+    bottom: 0;
+    left: 0;
+
+    @include md {
+      width: fluid(44);
+      height: fluid(8);
+      bottom: fluid(54);
+      left: 0;
+    }
+  }
+
+  &--item-title {
+    font-style: normal;
+    font-size: fluid(26, $sm);
+    line-height: 106.5%;
+    letter-spacing: -0.015em;
+
+    color: #ffffff;
+    margin-bottom: fluid(14, $sm);
+
+    @include md {
+      font-size: fluid(34);
+      margin-bottom: fluid(31);
+    }
+  }
+
+  &--item-text {
+    font-size: fluid(12, $sm);
+    line-height: 121%;
+    color: #828282;
+    width: fluid(290, $sm);
+    margin: 0 auto fluid(98, $sm) auto;
+
+    @include md {
+      width: fluid(399);
+      padding-right: fluid(18);
+      font-size: fluid(15);
+      margin: 0;
+    }
+  }
+
+  @include md {
+    flex-direction: row;
+    text-align: start;
+    max-width: fluid(1728);
+    margin: 0 auto fluid(250);
+  }
+}
+
+#contact {
+  margin-bottom: fluid(104, $sm);
+
+  @include md {
+    margin-bottom: fluid(174);
+  }
+
+  &-title {
+    width: fluid(328, $sm);
+    font-size: fluid(47, $sm);
+    line-height: fluid(50, $sm);
+    color: #a3a3a3;
+    margin: 0 0 fluid(20, $sm) fluid(24, $sm);
+
+    @include md {
+      width: fluid(838);
+      font-size: fluid(120);
+      line-height: fluid(128);
+      margin: 0 0 fluid(50) 0;
+    }
+  }
+
+  &-banner {
+    height: fluid(243, $sm);
+    background-color: grey;
+    margin-bottom: fluid(63, $sm);
+    display: none;
+
+    @include md {
+      height: fluid(100);
+      position: absolute;
+      z-index: -10;
+      display: none;
+    }
+  }
+
+  &-description {
+    font-size: fluid(13, $sm);
+    line-height: 121%;
+
+    margin: 0 0 fluid(13, $sm) fluid(99, $sm);
+    color: #828282;
+    width: fluid(259, $sm);
+
+    @include md {
+      font-size: fluid(15);
+      margin: 0 0 fluid(19) 0;
+      width: fluid(399);
+    }
+  }
+
+  &-title--text {
+    width: fluid(203, $sm);
+    background: #ffffff;
+    margin-left: fluid(42, $sm);
+    box-shadow: fluid(0) fluid(0) fluid(63) rgba(0, 0, 0, 0.25);
+    transform: rotate(1.35deg);
+
+    @include md {
+      width: fluid(567);
+      margin-left: fluid(89);
+    }
+  }
+
+  span:nth-child(1) {
+    font-weight: 900;
+    font-size: fluid(58, $sm);
+    line-height: fluid(50, $sm);
+    letter-spacing: -0.08em;
+    color: #111210;
+    transform: rotate(-1.31deg);
+
+    @include md {
+      width: fluid(527);
+      font-size: fluid(165);
+      line-height: fluid(151);
+    }
+  }
+
+  span:nth-child(2) {
+    padding-left: fluid(154, $sm);
+
+    @include md {
+      padding-left: fluid(397);
+    }
+  }
+
+  @include md {
+    width: fluid(1086);
+    margin-left: fluid(535);
+  }
+}
+
+#contact-email {
+  display: inline-block;
+  position: relative;
+  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  font-weight: 700;
+  font-size: fluid(16, $sm);
+  line-height: 121%;
+  color: #ffffff;
+  margin-left: fluid(99, $sm);
+
+  @include md {
+    font-size: fluid(31);
+    margin: 0;
+  }
+}
+
+#contact > .hero-svg--hand {
+  width: fluid(118, $sm);
+  height: fluid(118, $sm);
+  left: fluid(27, $sm);
+  bottom: fluid(236, $sm);
+
+  border-radius: fluid(22);
+  transform: rotate(18deg);
+
+  display: none;
+
+  &.fx-on svg:nth-child(1) {
+    animation: rotation 16s infinite linear;
+  }
+
+  svg:nth-child(2) {
+    width: fluid(42, $sm);
+    height: fluid(42, $sm);
+    transform: rotate(-63deg);
+
+    @include md {
+      width: fluid(102);
+      height: fluid(102);
+      transform: rotate(-18deg);
+    }
+  }
+
+  @include md {
+    display: flex;
+    left: auto;
+    bottom: fluid(13);
+    right: fluid(20);
+    width: fluid(290);
+    height: fluid(290);
+    border-radius: fluid(22);
+  }
+}

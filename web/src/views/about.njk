@@ -1,0 +1,126 @@
+---
+layout: _layout.njk
+title: About
+---
+
+<main id="about" class="pea" data-hydra-content="about">
+  <section id="about-hero" class="pr" data-scroll-section>
+
+    <div id="about-wulf" class="df aic">
+      <svg id="about-hero--item-rectangle">
+        <use xlink:href="#rectangle-icon"></use>
+      </svg>
+      <span class="ttu">About Wulf</span>
+    </div>
+
+    <div id="hero-title" class="ttu font-alt pr">
+      <h1>
+        {{ about.intro | safe}}
+      </h1>
+      <div aria-hidden class="pa df jcc aic hero-svg--hand fx">
+        <svg class="pa">
+          <use xlink:href="#star-bg--icon"></use>
+        </svg>
+        <svg class="pa">
+          <use xlink:href="#hand-icon"></use>
+        </svg>
+      </div>
+    </div>
+    <div id="hero-socials-container" class="df">
+      <p id="hero-desc">{{ about.desc }}</p>
+
+      <ul id="hero-socials" class="df">
+        <li>
+          <a rel="noreferrer noopener" target="_blank" href="{{ contact.instagram }}">
+            <svg>
+              <use xlink:href="#instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a rel="noreferrer noopener" target="_blank" href="{{ contact.facebook }}">
+            <svg>
+              <use xlink:href="#facebook-icon"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services" class="pr" data-scroll-section>
+    <div id="services-svg--cam" class="pa df jcc aic fx">
+      <svg class="pa">
+        <use xlink:href="#star-bg--icon"></use>
+      </svg>
+      <svg class="pa">
+        <use xlink:href="#camera-icon"></use>
+      </svg>
+    </div>
+
+    <picture id="services-img--main">
+      {% sanityImage about.cover,
+      about.cover.alt,
+      1844,
+      2 %}
+      {# <img fetchpriority="auto" loading="eager" decoding="async" src="{% imageUrlFor about.cover %}" alt="{{ about.cover.alt }}"> #}
+    </picture>
+
+    <h2 id="services-title" class="ttu font-alt">
+      What <span class="dib bg-block">services</span>
+      <span> do we </span>
+      <span>offer?</span>
+    </h2>
+
+    <ul id="services-list" class="df fw aic services-list">
+      {% for item in about.services %}
+        <li class="services-list--item pr">
+          <picture class="services-list--item-icon">
+            <img loading="lazy" decoding="async" src="{% imageUrlFor item.icon %}" alt="{{ item.title }}">
+          </picture>
+
+          <h3 class="services-list--item-title font-alt ttu">{{ item.title }}</h3>
+          <p class="services-list--item-text">{{ item.description }}</p>
+
+          <div class="pa df jcb aic bottom left right list-item--decal">
+            <svg class="services-list--item-rectangle">
+              <use xlink:href="#rectangle-icon"></use>
+            </svg>
+            <svg class="services-list--item-star">
+              <use xlink:href="#star-small"></use>
+            </svg>
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="contact" class="df fc pr" data-scroll-section>
+    <div id="contact-text">
+      <div id="contact-title" class="font-alt ttu">
+        Do  
+        <div id="contact-title--text" class="df jcc">
+          <span class="dib">epic</span>
+        </div>
+        <span>sh*t</span> with us!</div>
+      <div id="contact-banner" aria-hidden></div>
+      <div id="contact-description">{{ about.footer }}</div>
+      <div id="contact-email">
+        <a target="_blank" rel="noopener noreferrer" href="mailto:{{ contact.email }}" class="link link-solid">{{ contact.email }}</a>
+      </div>
+    </div>
+    <div aria-hidden class="pa df jcc aic hero-svg--hand fx">
+      <svg class="pa">
+        <use xlink:href="#star-bg--icon"></use>
+      </svg>
+      <svg class="pa">
+        <use xlink:href="#hand-icon"></use>
+      </svg>
+    </div>
+  </section>
+
+  <div data-scroll-section>
+    {% include "_components/_footer.njk" %}
+  </div>
+</main>

@@ -1,0 +1,9 @@
+{% macro article(url = '/blog/', img = '', alt = 'image', title = '', desc = '') %}
+    <a class="article-card" href="/article/{{ url }}/">
+        <picture class="article-card--picture">
+            <img src="" data-lazy-src="{% imageUrlFor img %}" alt="{{ alt }}"/>
+        </picture>
+        <div class="article-card--title">{{ title }}</div>
+        <div class="article-card--desc">{{ desc }}</div>
+    </a>
+{% endmacro %}

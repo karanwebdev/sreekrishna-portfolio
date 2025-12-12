@@ -1,0 +1,41 @@
+#cursor {
+
+  #crosshair {
+
+    &-x,
+    &-y {
+      background: #3C3C3C;
+    }
+
+    &-x {
+      width: 100vw;
+      height: 1px;
+    }
+
+    &-y {
+      height: 100vh;
+      width: 1px;
+    }
+
+    &-plus {
+
+      &--x,
+      &--y {
+        background-color: #fff;
+        position: relative;
+      }
+
+      &--x {
+        height: 1px;
+        width: fluid(14);
+        left: fluid(-7);
+      }
+
+      &--y {
+        width: 1px;
+        height: fluid(14);
+        top: fluid(-7);
+      }
+    }
+  }
+}

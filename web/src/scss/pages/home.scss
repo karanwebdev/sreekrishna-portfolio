@@ -1,0 +1,148 @@
+#home {
+  min-height: calc(100 * var(--vh));
+}
+
+#frame {
+  position: fixed;
+  width: fluid(335, $sm);
+  height: fluid(200, $sm);
+
+  top: calc(50 * var(--vh));
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+
+  &.active {
+    .frame-border {
+
+      &::before,
+      &::after {
+        transition: transform 1.75s $ease-out-expo;
+        transform: none;
+      }
+    }
+  }
+
+  @include md {
+    width: fluid(980);
+    height: fluid(610);
+  }
+
+}
+
+// frame
+.frame-border {
+  position: absolute;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $white;
+    transition: transform .75s $ease-out-expo;
+  }
+
+  &::before {
+    width: fluid(64);
+    height: 1px;
+    transform: scaleX(0);
+  }
+
+  &::after {
+    height: fluid(64);
+    width: 1px;
+    transform: scaleY(0);
+  }
+
+
+  display: none;
+
+  @include md {
+    display: unset;
+  }
+}
+
+#frame-top-right {
+  top: 0;
+  right: 0;
+
+  &::before {
+    right: 0;
+    transform-origin: 100% 50%;
+  }
+
+  &::after {
+    top: 0;
+    transform-origin: 0 0;
+  }
+}
+
+#frame-bottom-left {
+  bottom: 0;
+  left: 0;
+
+  &::before {
+    left: 0;
+    transform-origin: 0 50%;
+  }
+
+  &::after {
+    bottom: 0;
+    transform-origin: 50% 100%;
+  }
+}
+
+// case title list
+
+.case-title--item {
+  left: 50vw;
+  transform: translate(-50%, 0);
+  bottom: calc(25 * var(--vh));
+  font-size: fluid(26, $sm);
+  // max-width: 85vw;
+  position: fixed;
+  height: fit-content;
+  width: fit-content;
+  line-height: 0.9;
+
+  // opacity: 0;
+  // visibility: hidden;
+
+  @include md {
+    bottom: calc(10 * var(--vh));
+    font-size: fluid(82);
+    max-width: 55vw;
+  }
+
+  .l-line {
+    white-space: nowrap;
+  }
+}
+
+.b-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.b-word {
+  text-align: center;
+  width: fit-content;
+
+  &:nth-of-type(2n - 1) {
+    transform: translateY(10%);
+
+    &::before {
+      transform: rotate(-2.1deg);
+    }
+  }
+}
+
+#goto-case {
+  width: 100%;
+  height: 100%;
+
+  .slider-mode & {
+    pointer-events: all;
+  }
+}

@@ -1,0 +1,108 @@
+@use 'sass:math';
+
+$slides: 1;
+$slideWidth: math.div(95vw, $slides);
+$slideAspect: math.div(16, 9);
+
+$container-padding: 0;
+$slide-gap: fluid(16, 1440);
+
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+  padding: $container-padding math.div((100 - $slideWidth), 2);
+  cursor: grab;
+}
+
+.carousel-slider {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.js .carousel-slider {
+  flex-direction: row;
+}
+
+.carousel-slide {
+  overflow: hidden;
+  display: block;
+  height: math.div($slideWidth, $slideAspect);
+  min-width: $slideWidth;
+  max-width: 100%;
+  padding: 0 math.div($slide-gap, 2);
+}
+
+.carousel-slide__content {
+  height: 100%;
+  width: 100%;
+}
+
+@include md {
+  $slides: 2;
+  $slideWidth: math.div(100vw, $slides);
+  $slideAspect: math.div(16, 9);
+
+  $container-padding: 0;
+  $slide-gap: fluid(16, 1440);
+
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+    padding: $container-padding math.div((100 - $slideWidth), 2);
+    cursor: grab;
+  }
+
+  .carousel-slider {
+    display: flex;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    overflow: hidden;
+    display: block;
+    height: math.div($slideWidth, $slideAspect);
+    min-width: $slideWidth;
+    max-width: 100%;
+    padding: 0 math.div($slide-gap, 2);
+  }
+
+  .carousel-slide__content {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@include xl {
+  $slides: 2;
+  $slideWidth: math.div(1440px, $slides);
+  $slideAspect: math.div(16, 9);
+  $container-padding: 0;
+  $slide-gap: fluid(16, 1440);
+
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+    padding: $container-padding math.div($slideWidth, 2);
+    cursor: grab;
+  }
+
+  .carousel-slider {
+    display: flex;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    overflow: hidden;
+    display: block;
+    height: math.div($slideWidth, $slideAspect);
+    min-width: $slideWidth;
+    max-width: 100%;
+    padding: 0 math.div($slide-gap, 2);
+  }
+
+  .carousel-slide__content {
+    height: 100%;
+    width: 100%;
+  }
+}

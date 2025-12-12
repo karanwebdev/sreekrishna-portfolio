@@ -1,0 +1,43 @@
+.l-wrapper {
+  overflow: hidden;
+  overflow: clip;
+  contain: content;
+  width: fit-content;
+}
+
+.tac {
+  .l-wrapper {
+    margin: 0 auto;
+  }
+}
+
+// .l-line,
+.l-word,
+.l-char {
+  transform: translateY(110%);
+}
+
+// Required styles
+
+#split,
+#split-text,
+#split-indent {
+  position: fixed;
+  visibility: hidden;
+  contain: content;
+}
+
+#split-text {
+  white-space: nowrap;
+}
+
+// inlining, reset text indent if any
+.l-word,
+.l-char--wrapper {
+  display: inline-block;
+  text-indent: 0;
+}
+
+.l-line {
+  display: inline-block;
+}

@@ -1,0 +1,66 @@
+#footer-wrapper {
+  margin: auto;
+  width: fluid(335, $sm);
+  padding: fluid(30, $sm) 0 fluid(41, $sm) 0;
+  border-top: fluid(1) solid #3c3c3c;
+  font-size: fluid(10, $sm);
+  line-height: fluid(12, $sm);
+
+  @include md {
+    width: fluid(1728);
+    padding: fluid(47) 0 fluid(59) 0;
+  }
+}
+
+#footer-copyright {
+  @include md {
+    font-size: fluid(14);
+    line-height: fluid(16);
+  }
+}
+
+#footer-links {
+  color: #808080;
+
+  @include md {
+    font-size: fluid(13);
+    line-height: fluid(15);
+  }
+
+  li:nth-child(1) {
+    margin-right: fluid(27, $sm);
+
+    @include md {
+      margin-right: fluid(37);
+    }
+  }
+
+  .link-solid::before,
+  .link-solid:after {
+    border-bottom: fluid(1) solid #808080;
+  }
+}
+
+#h-footer {
+  padding-bottom: fluid(32, $sm);
+  font-size: clampfluid(12);
+
+  @include md {
+    padding-bottom: fluid(64);
+    font-size: clampfluid(10);
+  }
+}
+
+#h-footer--details {
+  line-height: 106.5%;
+  opacity: 0.4;
+  width: fluid(100, $sm);
+
+  @include md {
+    width: fluid(146);
+  }
+}
+
+#h-socials--list {
+  gap: fluid(11);
+}

@@ -1,0 +1,33 @@
+---
+layout: _layout.njk
+title: Home
+eleventyComputed:
+    title: "{{ seo.description | safe }}"
+---
+
+<main id="cover" class="pen" data-hydra-content="cover">
+
+    <video
+        id="vid" 
+        class="pf inset zn1"
+        playsinline
+        autoplay 
+        muted 
+        loop
+        width="{{ seo.homeCover.dimensions.width }}" 
+        height="{{ seo.homeCover.dimensions.height }}" 
+        preload="auto" 
+        src="{{ seo.homeCover.small }}"
+        data-src="{{ seo.homeCover.small }}" 
+        data-src-lg="{{ seo.homeCover.full }}"></video>
+
+    <a href="/work/" id="c-title" class="z1 pf pea">
+        <h1 id="title" class="ttu font-alt">WULF</h1>
+        <button id="cover-cta" class="cp df aic jcc oh ttu font-alt" id="desc">Explore</button>
+    </a>
+
+    {% include '_footer.njk' %}
+
+    {# dummy to prevent scroll #}
+    <div hidden aria-hidden="true" data-scroll-section></div>
+</main>

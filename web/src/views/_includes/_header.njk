@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>{{ seo.title }} — {{ title }}</title>
+        <script type="module" defer src="{{ '/js/main.js' | url | bust }}"></script>
+        <link rel="stylesheet" href="{{ '/css/style.css' | url | bust }}">
+
+        <link rel="preconnect" href="https://cdn.sanity.io/">
+
+        <link href="{{ '/static/meta/favicon.ico' | url}}" rel="shortcut icon" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ '/static/meta/apple-touch-icon.png' | url }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ '/static/meta/favicon-32x32.png' | url }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ '/static/meta/favicon-16x16.png' | url }}">
+        <link rel="mask-icon" href="{{ '/static/meta/safari-pinned-tab.svg' | url }}" color="#5bbad5">
+
+        <link rel="manifest" href="{{ '/static/meta/site.webmanifest' | url }}">
+
+        <meta name="description" content="{{ seo.description }}">
+        <meta name="keywords" content="{{ seo.keywords }}">
+        <meta name="theme-color" content="#000">
+        <meta name="robots" content="all"/>
+
+        <script>
+            window._D={{ home | jsmin | safe }}
+        </script>
+    </head>

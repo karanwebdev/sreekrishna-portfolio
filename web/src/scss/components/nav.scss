@@ -1,0 +1,102 @@
+#nav {
+  font-size: fluid(12, $sm);
+  line-height: 106.5%;
+  padding-top: fluid(40, $sm);
+
+  @include md {
+    font-size: fluid(12);
+    padding-top: fluid(69);
+  }
+}
+
+#nav-logo {
+  font-size: fluid(30, $sm);
+  line-height: 91.3%;
+  letter-spacing: -0.08em;
+  transform: rotate(-1.28deg);
+
+  @include md {
+    margin-right: fluid(57);
+    font-size: fluid(30);
+  }
+}
+
+#nav-left {
+  width: 100%;
+}
+
+#nav-list--left {
+  margin-left: auto;
+
+  @include md {
+    margin-left: 0;
+  }
+
+  >div {
+    gap: fluid(16);
+  }
+}
+
+#nav-right {
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+
+  @include md {
+    &.on {
+      opacity: 1;
+      pointer-events: all;
+
+    }
+  }
+
+  &.close {
+
+    #nav-grid--toggle,
+    #nav-case--close {
+      transform: translateY(-100%);
+    }
+  }
+
+
+  &.toggle {
+    #nav-grid--toggle::after {
+      transform: translateX(#{fluid(109 - 52)});
+    }
+  }
+}
+
+#nav-grid--toggle {
+  transition: transform 1.5s $ease-out-expo;
+  width: fluid(109);
+  height: fluid(32);
+
+  background: rgb(196, 196, 196, 0.3);
+  border-radius: fluid(16);
+  padding: 0 fluid(13);
+
+  &::after {
+    content: '';
+    background: #FFFFFF;
+    border-radius: fluid(16);
+    width: fluid(49);
+    height: fluid(28);
+    position: absolute;
+    left: fluid(1);
+    top: fluid(2);
+    transition: transform 1.5s $ease-out-expo;
+    z-index: -1;
+  }
+}
+
+#nav-case--close {
+  transition: transform 1.25s $ease-out-expo;
+  top: 100%;
+  right: 0;
+}
+
+.nav-toggle--icon {
+  height: fluid(18);
+  width: fluid(24);
+  mix-blend-mode: difference;
+}
