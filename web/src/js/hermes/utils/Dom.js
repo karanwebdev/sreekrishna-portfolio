@@ -1,16 +1,22 @@
-import { isArray, isUndefined } from './Check';
+import { isArray, isUndefined } from "./Check";
 
 export const qs = (s, o = document) => o.querySelector(s);
 
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];
 
 export const bounds = (el) => {
-  const {
-    top, right, bottom, left, width, height, x, y,
-  } = el.getBoundingClientRect();
+  const { top, right, bottom, left, width, height, x, y } =
+    el.getBoundingClientRect();
 
   return {
-    top, right, bottom, left, width, height, x, y,
+    top,
+    right,
+    bottom,
+    left,
+    width,
+    height,
+    x,
+    y,
   };
 };
 
@@ -18,10 +24,12 @@ export const select = (query) => {
   if (isUndefined(query)) return [];
   if (query === window || query === document) {
     return [query];
-  } if (typeof query === 'string') {
+  }
+  if (typeof query === "string") {
     // selector string
     return qsa(query);
-  } if (isArray(query)) {
+  }
+  if (isArray(query)) {
     // nodelist
     return query;
   }
@@ -41,6 +49,6 @@ export const getOffsetTop = (el) => {
 };
 
 export const classList = {
-  add: (node, str) => node.classList.add(...str.split(' ')),
-  remove: (node, str) => node.classList.remove(...str.split(' ')),
+  add: (node, str) => node.classList.add(...str.split(" ")),
+  remove: (node, str) => node.classList.remove(...str.split(" ")),
 };

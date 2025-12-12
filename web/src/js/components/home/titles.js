@@ -1,5 +1,5 @@
-import { Reveal } from '../../reveal';
-import { clamp, qsa, select } from '../../hermes';
+import { Reveal } from "../../reveal";
+import { clamp, qsa, select } from "../../hermes";
 
 export class Titles {
   constructor({ targets }) {
@@ -16,11 +16,14 @@ export class Titles {
     // this.splits.forEach((split) => split.resize());
 
     this.targets = select(targets);
-    this.reveals = this.targets.map((el) => new Reveal({
-      targets: el,
-      char: true,
-      rotate: true,
-    }));
+    this.reveals = this.targets.map(
+      (el) =>
+        new Reveal({
+          targets: el,
+          char: true,
+          rotate: true,
+        })
+    );
 
     this.state = {
       idx: 0,
@@ -36,7 +39,7 @@ export class Titles {
       stagger: 50,
       visible: true,
       delay: 200,
-      easing: 'o6',
+      easing: "o6",
     });
     this.state.idx = idx;
   };
@@ -44,7 +47,12 @@ export class Titles {
   off = () => {
     if (!this.reveals.length || !this.reveals[this.state.idx]) return;
     this.reveals[this.state.idx].playTo({
-      duration: 400, to: -110, stagger: 25, delay: 0, visible: false, easing: 'i3',
+      duration: 400,
+      to: -110,
+      stagger: 25,
+      delay: 0,
+      visible: false,
+      easing: "i3",
     });
   };
 }
