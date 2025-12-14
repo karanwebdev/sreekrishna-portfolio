@@ -36,6 +36,11 @@
       "path": "./dashboardConfig.js"
     },
     {
+      "name": "part:@sanity/dashboard/widget/vercel-deploy",
+      "implements": "part:@sanity/dashboard/widget",
+      "path": "./plugins/vercel-deploy-widget.js"
+    },
+    {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./parts/assetSources.js"
     },
