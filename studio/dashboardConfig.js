@@ -1,16 +1,16 @@
-const title = "Sree Krishna";
-const apiId = "743befd7-872e-40c3-b4c2-c66d669f0d3a";
-const buildHookId = "62c5d2b5d0a76d0fb0694f6d";
-const name = "sree-krishna";
+const title = "Sree Krishna Portfolio";
+const apiId = "prj_I8QTDwwh10IGE6sGTaA0M2VvsKwR";
+const buildHookId = "c3iaL1sYtr";
+const name = "sreekrishna-portfolio";
 
 export default {
   widgets: [
     {
       name: "netlify",
       options: {
-        title: "Netlify deploys",
+        title: "Vercel Deployments",
         description:
-          "Because these sites are static builds, they need to be re-deployed to see the changes when documents are published. You can check if the build was successful.",
+          "This site is a static build deployed on Vercel. Click 'Deploy' below to manually trigger a rebuild and publish your content changes.",
         sites: [
           {
             title,
